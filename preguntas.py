@@ -23,7 +23,7 @@ def pregunta_01():
 
     """
     row_count = len(tbl0)
-    print(row_count)
+    return row_count
 
 
 def pregunta_02():
@@ -34,7 +34,8 @@ def pregunta_02():
     4
 
     """
-    return
+    col_count = tbl0.shape[1]
+    return col_count
 
 
 def pregunta_03():
@@ -51,7 +52,9 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    tbl0 = tbl0.value_counts("_c1")
+
+    return tbl0 
 
 
 def pregunta_04():
@@ -66,7 +69,12 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
+    import pandas as pd
+    import numpy as np
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl0 = tbl0.groupby("_c1")
+    tbl0 = tbl0.mean("_c2")
+    return tbl0
 
 
 def pregunta_05():
@@ -83,7 +91,12 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
+    import pandas as pd
+    import numpy as np
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl0 = tbl0.groupby("_c1")
+    tbl0 = tbl0.max("_c2")
+    return tbl0
 
 
 def pregunta_06():
@@ -95,7 +108,9 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    tbl1 = sorted(tbl1["_c4"].str.upper().unique())
+  
+    return tbl1
 
 
 def pregunta_07():
@@ -110,8 +125,11 @@ def pregunta_07():
     D    23
     E    67
     Name: _c2, dtype: int64
-    """
-    return
+    """ 
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl0 = tbl0.groupby("_c1")
+    tbl0 = tbl0["_c2"].sum()
+    return tbl0
 
 
 def pregunta_08():
