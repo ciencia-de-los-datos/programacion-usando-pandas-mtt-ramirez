@@ -52,7 +52,9 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    tbl0 = tbl0.value_counts("_c1")
+    import pandas as pd
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl0 = tbl0.sort_values(['_c1'], ascending=True, ignore_index=True)['_c1'].value_counts("_c1")
     return tbl0 
 
 
@@ -105,6 +107,7 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
+    tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
     tbl1 = sorted(tbl1["_c4"].str.upper().unique())
     return tbl1
 
@@ -252,6 +255,7 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
+    tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
     _c0 = list(set(tbl2['_c0']))
     _c5 = []
     list1 = []
@@ -269,7 +273,6 @@ def pregunta_12():
         list1 = []
 
     answer = pd.DataFrame(list(zip(_c0,_c5)), columns = ['_c0','_c5'])
-
     return answer
 
 
@@ -287,7 +290,7 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-
+    tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
     _c0 = tbl2['_c0'].tolist()
     _c1 = []
     _c5b = tbl2['_c5b'].tolist()
@@ -300,5 +303,4 @@ def pregunta_13():
     tbl0 = pd.DataFrame(list(zip(_c0,_c1, _c5b)), columns = ['_c0', '_c1', '_c5b'])
 
     answer = tbl0.groupby('_c1')['_c5b'].sum()
-
     return answer
