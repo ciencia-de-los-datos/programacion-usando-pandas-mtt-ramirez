@@ -54,8 +54,8 @@ def pregunta_03():
     """
     import pandas as pd
     tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
-    tbl0 = tbl0.sort_values(['_c1'], ascending=True, ignore_index=True)['_c1'].value_counts("_c1")
-    return tbl0 
+    tbl0 = tbl0.value_counts("_c1",ascending=True).astype(str).sort_values("_c1")
+    print (tbl0)
 
 
 def pregunta_04():
